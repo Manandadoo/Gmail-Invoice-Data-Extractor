@@ -21,7 +21,7 @@ A Python-based tool to automatically extract and organize invoice data from your
 - **Gmail API + OAuth2**
 - **PDF Parsers**: `PyPDF2`, `pdfplumber`
 - **Data Handling**: `pandas`
-- **Worqhat APIs` (optional integrations)
+- **Worqhat APIs`
 
 ---
 
