@@ -1,116 +1,82 @@
+# 📥 Gmail Invoice Data Extractor
 
-# **InvoicePro - Intelligent Invoice Extraction and Analysis Tool**  
-*Developed by InnoSync Squad*
-## **Team: InnoSync Squad**
-Ashish Tamhankar
-Anirudh Gupta
-Manan Dadoo
-Keshav Sonawane
-
-## **Project Overview**
-InvoicePro is a powerful tool designed to automatically extract and analyze relevant data from invoices. Developed with **Next.js** and **Tailwind CSS**, InvoicePro helps businesses and individuals streamline their invoice management process by extracting key details such as customer name, invoice number, product name, GST information, and more. With the integration of Gmail and Firebase, the tool can fetch invoices directly from Gmail, process the contents, and present the data in an easily accessible format.
-
-InvoicePro aims to save time, reduce human error, and improve data processing efficiency for accounting and financial tasks.
+A Python-based tool to automatically extract and organize invoice data from your Gmail inbox. Designed for finance teams, freelancers, and small businesses, it eliminates the need for manual data entry by scanning emails and attachments for relevant invoice information.
 
 ---
 
-## **Key Features**
-- **Automated Invoice Extraction:** The tool extracts key data fields from invoices, such as customer name, invoice number, supplier name, date, product names, taxable value, GST ID, total amount, and quantity.
-- **Seamless Gmail Integration:** InvoicePro can access Gmail accounts to fetch invoices directly from emails with PDF attachments.
-- **Data Storage:** Extracted data is stored in a Firebase database for easy retrieval and future analysis.
-- **Responsive User Interface:** Built with Tailwind CSS to ensure an intuitive and user-friendly experience across devices.
-- **OAuth Authentication:** Ensures secure access to Gmail via the Google OAuth flow.
+## ✨ Features
+
+- 🔐 **Secure Gmail Access**: Uses OAuth2 for safe, user-authorized access to Gmail.
+- 📑 **Invoice Detection**: Identifies and filters invoice emails based on sender, subject, or attachment type.
+- 📦 **Data Extraction**: Parses key fields like vendor, date, amount, and invoice number from both email body and attachments (PDF, etc.).
+- 📊 **Exportable Data**: Outputs data into CSV or integrates easily into database systems.
+- 🔄 **Customizable Parsing**: Modular structure allows adaptation for different invoice formats.
+- ⚙️ **CLI-Based Workflow**: Simple, interactive command-line interface for ease of use.
 
 ---
 
-## **Tech Stack**
-- **Next.js**: Framework for building the full-stack application.
-- **Tailwind CSS**: Utility-first CSS framework for creating a responsive design.
-- **Firebase**: Backend database for storing invoice data and user information.
-- **Node.js**: Server-side platform for handling API requests.
-- **OAuth 2.0**: Authentication mechanism to securely access Gmail.
-- **Geist Font**: A modern font optimized for better UI appearance.
+## 🛠️ Tech Stack
+
+- **Python 3**
+- **Gmail API + OAuth2**
+- **PDF Parsers**: `PyPDF2`, `pdfplumber`
+- **Data Handling**: `pandas`
+- **Worqhat APIs` (optional integrations)
 
 ---
 
-## **Getting Started**
+## 🚀 Getting Started
 
-### **Prerequisites**
-Make sure you have the following installed on your local machine:
-- **Node.js** (version 14 or higher) - [Download Node.js](https://nodejs.org/)
-- **npm**, **yarn**, or **pnpm** (for managing dependencies)
+### Prerequisites
 
-### **Clone the Repository**
-Start by cloning the repository to your local machine:
+- Python 3.7+
+- Google Cloud Project with Gmail API enabled
+- Gmail account with invoice-related emails
+
+### Installation
 
 ```bash
-git clone https://github.com/sheeeeesha/renAi-Team-InvoSync.git
-cd renai
+git clone https://github.com/Manandadoo/Gmail-Invoice-Data-Extractor.git
+cd Gmail-Invoice-Data-Extractor
+pip install -r requirements.txt
 ```
 
-### **Install Dependencies**
-Install the necessary dependencies by running the following command:
+### Setup Gmail API
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Enable the **Gmail API**
+3. Create OAuth2 credentials (Desktop Application)
+4. Download `credentials.json` and place it in the project root
+
+### Run the Extractor
 
 ```bash
-# Using npm
-npm install
-
-# Or using yarn
-yarn install
-
-# Or using pnpm
-pnpm install
+python main.py
 ```
 
-### **Set Up Gmail OAuth**
-To access Gmail for fetching invoices, follow these steps:
-1. Create a project on the [Google Cloud Console](https://console.cloud.google.com/).
-2. Enable the **Gmail API** and set up **OAuth credentials**.
-3. Replace the placeholders in the project with your OAuth credentials (client ID, client secret).
-4. Add your API keys and OAuth credentials to `.env.local`.
-
-### **Run the Development Server**
-Run the development server locally:
-
-```bash
-# Using npm
-# in the renai folder
-npm run dev
-# in the second terminal
-node server/index.js
-
-# Or using yarn
-yarn dev
-
-# Or using pnpm
-pnpm dev
-```
-
-This will start the application at `http://localhost:3000`. Open the URL in your browser to view the application.
+Follow the on-screen prompts for authentication and Gmail access.
 
 ---
 
-## **How to Use the Application**
+## ⚙️ Customization
 
-1. **Authenticate with Google**
-   - Go to the home page of the app.
-   - Click on the **"Authenticate"** button to initiate the Google OAuth authentication process.
-   - After signing in with your Google account and granting access to your Gmail, the application will start fetching invoices from your Gmail inbox.
-
-2. **Extract Invoices**
-   - The app will look for emails with PDF attachments and extract relevant information such as the customer name, invoice number, product details, taxable value, and more.
-   - The extracted data will be displayed in a table format for easy review.
-
-3. **Data Analysis and Storage**
-   - The extracted data is stored in **Firebase Firestore** for future access and analysis.
-   - Users can review and analyze the extracted data or export it for reporting purposes.
+- **Filter rules**: Customize sender, subject, and label filters in `main.py`
+- **Parsing logic**: Extend or adjust parsing in the `invoice_parser/` module
+- **Storage format**: Modify export settings to save as CSV, JSON, or into a database
 
 ---
 
+## 📌 Notes
 
-
-## **License**
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
+- This tool only reads invoice-related emails. It does **not** send, delete, or modify any email content.
+- OAuth credentials are stored locally for re-authentication.
+- For production use, consider moving credentials and tokens into secure storage.
 
 ---
 
+## 🔗 Resources
+
+- [Gmail API Python Quickstart](https://developers.google.com/gmail/api/quickstart/python)
+- [Google OAuth2 Documentation](https://developers.google.com/identity/protocols/oauth2)
+
+---
